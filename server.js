@@ -22,3 +22,19 @@ app.get('/roll/:number', (req, res) => {
     }
 });
 
+const collectibles = [
+    {name: 'shiny ball', price: 5.95 },
+    {name: 'autographed picture of a dog', price: 10},
+    {name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
+];
+
+app.get('/collectibles/:index', (req, res) => {
+    const index = parseInt(req.params.index, 10);
+
+    if(isNaN(index) || index < 0 || index >= collectibles.length) {
+        res.send('This item is not in stock yet. Check back Soon!');
+    } else {
+        const item = collectibles[index];
+        res.send(`You want the ${item.name}? For ${item.price}, it can be yours!`);
+    }
+});
