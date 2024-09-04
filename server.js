@@ -60,6 +60,10 @@ app.get('/shoes', (req, res) => {
         filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice);
     }
 
+    if (!isNaN(maxPrice)) {
+        filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice);
+    }
+
     if (type) {
         filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
     }
